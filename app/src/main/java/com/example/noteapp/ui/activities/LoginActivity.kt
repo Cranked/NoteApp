@@ -11,7 +11,6 @@ import com.example.noteapp.data.db.dao.UserDao
 import com.example.noteapp.data.db.models.User
 
 class LoginActivity : BaseActivity() {
-    lateinit var userDao: UserDao
     lateinit var signUpButton: Button
     lateinit var signInButton: Button
     lateinit var userNameEditText: EditText
@@ -27,7 +26,6 @@ class LoginActivity : BaseActivity() {
     }
 
     fun init() {
-        userDao = database!!.userDao()
         signUpButton = findViewById(R.id.signUpButton)
         signInButton = findViewById(R.id.signInButton)
         userNameEditText = findViewById(R.id.editTextUserName)
