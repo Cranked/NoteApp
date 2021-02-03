@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import com.example.noteapp.R
 import com.example.noteapp.data.db.models.User
+import java.lang.Exception
 
 class LoginActivity : BaseActivity() {
     lateinit var signUpButton: Button
@@ -23,33 +24,39 @@ class LoginActivity : BaseActivity() {
     }
 
     fun init() {
-        signUpButton = findViewById(R.id.signUpButton)
-        signInButton = findViewById(R.id.signInButton)
-        userNameEditText = findViewById(R.id.editTextUserName)
-        passwordEditText = findViewById(R.id.editTextPassword)
+        try {
+            signUpButton = findViewById(R.id.signUpButton)
+            signInButton = findViewById(R.id.signInButton)
+            userNameEditText = findViewById(R.id.editTextUserName)
+            passwordEditText = findViewById(R.id.editTextPassword)
+        } catch (e: Exception) {
+            showMessage(e.toString())
+        }
     }
 
     fun setButtonClickListeners() {
-
-
-        signUpButton.setOnClickListener {
-            goToLogin()
-        }
-        signInButton.setOnClickListener {
-            if (helper.validationNull(userNameEditText.text.toString()) || helper.validationNull(passwordEditText.text.toString())) {
-                showMessage(getString(R.string.mustUserNameandPassword))
-                return@setOnClickListener
+        try {
+            signUpButton.setOnClickListener {
+                goToLogin()
             }
-            var user = getUserModel(userNameEditText.text.toString(), passwordEditText.text.toString())
-            if (user != null) {
-                clearUserActivateState()
-                user.isActivated = true
-                userDao.update(user)
-                startActivity(Intent(this, MainActivity::class.java))
-                goToActivity()
-            } else {
-                showMessage(getString(R.string.userpasswordInvalidate))
+            signInButton.setOnClickListener {
+                if (helper.validationNull(userNameEditText.text.toString()) || helper.validationNull(passwordEditText.text.toString())) {
+                    showMessage(getString(R.string.mustUserNameandPassword))
+                    return@setOnClickListener
+                }
+                var user = getUserModel(userNameEditText.text.toString(), passwordEditText.text.toString())
+                if (user != null) {
+                    clearUserActivateState()
+                    user.isActivated = true
+                    userDao.update(user)
+                    startActivity(Intent(this, MainActivity::class.java))
+                    goToActivity()
+                } else {
+                    showMessage(getString(R.string.userpasswordInvalidate))
+                }
             }
+        } catch (e: Exception) {
+            showMessage(e.toString())
         }
     }
 
