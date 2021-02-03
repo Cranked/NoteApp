@@ -4,10 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import com.example.noteapp.R
-import com.example.noteapp.data.db.DatabaseManager
-import com.example.noteapp.data.db.dao.UserDao
 import com.example.noteapp.data.db.models.User
 
 class LoginActivity : BaseActivity() {
@@ -45,7 +42,11 @@ class LoginActivity : BaseActivity() {
             }
             var user = getUserModel(userNameEditText.text.toString(), passwordEditText.text.toString())
             if (user != null) {
-
+                clearUserActivateState()
+                user.isActivated = true
+                userDao.update(user)
+                startActivity(Intent(this, MainActivity::class.java))
+                goToActivity()
             } else {
                 showMessage(getString(R.string.userpasswordInvalidate))
             }
@@ -55,6 +56,18 @@ class LoginActivity : BaseActivity() {
     fun goToLogin() {
         startActivity(Intent(this, SignUpActivity::class.java))
         finish()
+    }
+
+    fun goToActivity() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
+
+    fun clearUserActivateState() {
+        userDao.getAllUser().forEach {
+            it.isActivated = false
+            userDao.update(it)
+        }
     }
 
     fun getUserModel(userName: String, password: String): User {
