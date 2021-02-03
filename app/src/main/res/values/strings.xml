@@ -8,6 +8,8 @@
     <string name="password">Parola</string>
     <string name="userpasswordInvalidate">Kullanıcı Adı veya Parola Yanlış</string>
     <string name="mustUserNameandPassword">Kullanıcı adı veya parola boş bırakılamaz.</string>
+    <string name="alreadyRegistered">Kayıt Zaten Mevcut</string>
+    <string name="successRegistered">Kayıt Başarıyla Tamamlandı</string>
     <string name="signIn">Giriş Yap</string>
     <string name="signUp">Kayıt Ol</string>
 

@@ -14,7 +14,7 @@ class User {
     lateinit var userName: String
 
     @ColumnInfo(name = "password")
-    lateinit var author: String
+    lateinit var password: String
 
     @ColumnInfo(name = "IsActivated")
     var isActivated: Boolean=false
