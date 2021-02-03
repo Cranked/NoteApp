@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NoteApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="userName">KullanıcAdı</string>
+    <string name="yourUserName">KullanıcıAdınız</string>
+    <string name="yourPassword">Parolanız</string>
+    <string name="password">Parola</string>
+    <string name="userpasswordInvalidate">Kullanıcı Adı veya Parola Yanlış</string>
+    <string name="mustUserNameandPassword">Kullanıcı adı veya parola boş bırakılamaz.</string>
+    <string name="signIn">Giriş Yap</string>
+    <string name="signUp">Kayıt Ol</string>
+
+</resources>
