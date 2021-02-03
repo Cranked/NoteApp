@@ -12,5 +12,7 @@
     <string name="successRegistered">Kayıt Başarıyla Tamamlandı</string>
     <string name="signIn">Giriş Yap</string>
     <string name="signUp">Kayıt Ol</string>
-
+    <string name="title">Başlık</string>
+    <string name="subject">Konu</string>
+    <string name="description">Açıklama</string>
 </resources>

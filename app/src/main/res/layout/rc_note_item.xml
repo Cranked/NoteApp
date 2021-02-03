@@ -5,20 +5,23 @@
     android:backgroundTintMode="multiply"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <TextView
         android:id="@+id/rc_txt_title"
-        android:text="başlık"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="@string/title" />
+
     <TextView
         android:id="@+id/rc_txt_subject"
-        android:text="konu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="@string/signUp" />
+
     <TextView
         android:id="@+id/rc_txt_description"
-        android:text="açıklama"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="@string/description" />
 
 </LinearLayout>
