@@ -15,4 +15,8 @@
     <string name="title">Başlık</string>
     <string name="subject">Konu</string>
     <string name="description">Açıklama</string>
+
+    <string name="todoNote">Yapılacaklar </string>
+    <string name="continousNote">Yapılıyor </string>
+    <string name="doneNote">Yapıldı </string>
 </resources>

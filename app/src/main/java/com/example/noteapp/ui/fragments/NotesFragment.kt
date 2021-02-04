@@ -1,11 +1,18 @@
 package com.example.noteapp.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager.widget.ViewPager
+import butterknife.BindView
+import butterknife.ButterKnife
 import com.example.noteapp.R
+import com.google.android.material.tabs.TabLayout
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,43 +25,57 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class NotesFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+
+    @BindView(R.id.viewpager)
+    lateinit var viewPager: ViewPager
+
+    @BindView(R.id.tabs)
+   lateinit var tabLayout: TabLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notes, container, false)
+        val view = inflater.inflate(R.layout.fragment_notes, container, false)
+        ButterKnife.bind(this, view)
+        setupViewPager(viewPager)
+        tabLayout.setupWithViewPager(viewPager)
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment NotesFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            NotesFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    fun setupViewPager(viewPager: ViewPager) {
+        val viewPagerAdapter = ViewPagerAdapter(fragmentManager)
+        viewPagerAdapter.addFrag(JobDoneFragment(), getString(R.string.doneNote))
+        viewPagerAdapter.addFrag(ContinuousNoteFragment(), getString(R.string.continousNote))
+        viewPagerAdapter.addFrag(TodoNoteFragment(), getString(R.string.todoNote))
+        viewPager.adapter = viewPagerAdapter
+
+    }
+
+    internal class ViewPagerAdapter(manager: FragmentManager?) :
+        FragmentStatePagerAdapter(manager!!) {
+
+        private val mFragmentList = arrayListOf<Fragment>()
+        private val mFragmentTitleList = arrayListOf<String>()
+
+        override fun getItem(position: Int): Fragment {
+            return mFragmentList[position]
+        }
+
+        fun addFrag(fragment: Fragment, title: String) {
+            mFragmentList.add(fragment)
+            mFragmentTitleList.add(title)
+        }
+
+        override fun getCount(): Int {
+            return mFragmentList.size
+        }
+
+        override fun getPageTitle(position: Int): CharSequence? {
+            return mFragmentTitleList[position]
+        }
+
     }
 }
