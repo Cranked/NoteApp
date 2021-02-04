@@ -19,4 +19,9 @@
     <string name="todoNote">Yapılacaklar </string>
     <string name="continousNote">Yapılıyor </string>
     <string name="doneNote">Yapıldı </string>
+
+    <string name="noteOperations">Not İşlemleri</string>
+    <string name="addNote">Not Ekle</string>
+    <string name="deleteNote">Not Sil</string>
+    <string name="updateNote">Not Güncelle</string>
 </resources>

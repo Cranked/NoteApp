@@ -32,7 +32,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
+
 
 dependencies {
     implementation 'com.jakewharton:butterknife:10.2.3'

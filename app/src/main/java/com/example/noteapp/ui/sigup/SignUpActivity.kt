@@ -1,13 +1,13 @@
-package com.example.noteapp.ui.activities
+package com.example.noteapp.ui.sigup
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import com.example.noteapp.R
-import com.example.noteapp.data.db.dao.UserDao
 import com.example.noteapp.data.db.models.User
+import com.example.noteapp.ui.base.BaseActivity
+import com.example.noteapp.ui.login.LoginActivity
 import java.lang.Exception
 
 class SignUpActivity : BaseActivity() {

@@ -8,40 +8,25 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.example.noteapp.R
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.fragment_notes.*
+
 import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [NotesFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class NotesFragment : Fragment() {
-
-
-    @BindView(R.id.viewpager)
     lateinit var viewPager: ViewPager
-
-    @BindView(R.id.tabs)
-   lateinit var tabLayout: TabLayout
-
+    lateinit var tabs: TabLayout
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_notes, container, false)
-        ButterKnife.bind(this, view)
+        viewPager = view.findViewById(R.id.viewpager)
+        tabs = view.findViewById(R.id.tabs)
         setupViewPager(viewPager)
-        tabLayout.setupWithViewPager(viewPager)
+        tabs.setupWithViewPager(viewPager)
         return view
     }
 

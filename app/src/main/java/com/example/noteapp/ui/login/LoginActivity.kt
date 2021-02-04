@@ -1,4 +1,4 @@
-package com.example.noteapp.ui.activities
+package com.example.noteapp.ui.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,9 @@ import android.widget.Button
 import android.widget.EditText
 import com.example.noteapp.R
 import com.example.noteapp.data.db.models.User
+import com.example.noteapp.ui.main.MainActivity
+import com.example.noteapp.ui.sigup.SignUpActivity
+import com.example.noteapp.ui.base.BaseActivity
 import java.lang.Exception
 
 class LoginActivity : BaseActivity() {
