@@ -13,13 +13,13 @@ class Notes {
     var userId: Int = 0
 
     @ColumnInfo(name = "title")
-    lateinit var title: String
+     var title: String?=null
 
     @ColumnInfo(name = "subject")
-    lateinit var subject: String
+     var subject: String?=null
 
     @ColumnInfo(name = "description")
-    lateinit var description: String
+     var description: String?=null
 
     @ColumnInfo(name = "noteState")
     var noteState: Int = 0
