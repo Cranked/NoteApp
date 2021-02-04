@@ -1,22 +1,25 @@
 package com.example.noteapp.ui.main
 
+import android.Manifest
 import android.os.Bundle
 import android.view.View
 import com.example.noteapp.R
 import com.example.noteapp.data.db.models.Notes
 import com.example.noteapp.ui.base.BaseActivity
 import com.example.noteapp.ui.fragments.NotesFragment
+import com.example.noteapp.util.AppPermissions
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Exception
 
 class MainActivity : BaseActivity() {
 
     private var visibleState: Boolean = false
+    var filePath: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         showFragment(NotesFragment())
-        getUserNotes()
         setViewFabs(visibleState)
         noteFab.setOnClickListener {
             visibleState = !visibleState
@@ -24,17 +27,7 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    fun getUserNotes() {
-        try {
-            userDao.getAllUser().forEach {
-                if (it.isActivated) {
 
-                }
-            }
-        } catch (e: Exception) {
-            showMessage(e.toString())
-        }
-    }
 
     fun getActivatedUserNotes(userId: Int): List<Notes> {
         return notesDao.getUserNotes(userId)
@@ -51,5 +44,4 @@ class MainActivity : BaseActivity() {
             addNoteFab.visibility = View.GONE
         }
     }
-
 }
