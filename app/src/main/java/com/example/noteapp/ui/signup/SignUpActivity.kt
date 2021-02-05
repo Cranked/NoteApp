@@ -1,4 +1,4 @@
-package com.example.noteapp.ui.sigup
+package com.example.noteapp.ui.signup
 
 import android.content.Intent
 import android.os.Bundle
