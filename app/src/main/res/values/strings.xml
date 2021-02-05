@@ -12,11 +12,28 @@
     <string name="successRegistered">Kayıt Başarıyla Tamamlandı</string>
     <string name="signIn">Giriş Yap</string>
     <string name="signUp">Kayıt Ol</string>
+
     <string name="title">Başlık</string>
     <string name="subject">Konu</string>
     <string name="description">Açıklama</string>
+    <string name="state">Durumu</string>
 
     <string name="todoNote">Yapılacaklar </string>
     <string name="continousNote">Yapılıyor </string>
     <string name="doneNote">Yapıldı </string>
+
+    <string name="noteOperations">Not İşlemleri</string>
+    <string name="addNote">Not Ekle</string>
+    <string name="deleteNote">Not Sil</string>
+    <string name="updateNote">Not Güncelle</string>
+
+    <string name="save">Kaydet</string>
+    <string name="cancel">Vazgeç</string>
+    <string-array name="note_states">
+        <item>Yapıldı</item>
+        <item>Yapılıyor</item>
+        <item>Yapılacak</item>
+    </string-array>
+
+
 </resources>
