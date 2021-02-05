@@ -4,10 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp.R
 import com.example.noteapp.data.db.models.Notes
-import kotlinx.android.synthetic.main.rc_note_item.view.*
 
 class NoteAdapter(private val notes: List<Notes>, val context: Context) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
 
@@ -25,8 +25,8 @@ class NoteAdapter(private val notes: List<Notes>, val context: Context) : Recycl
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val tvTitle = view.rc_txt_title
-        val tvSubject = view.rc_txt_subject
-        val tvDescription = view.rc_txt_description
+        val tvTitle = view.findViewById<TextView>(R.id.rc_txt_title)
+        val tvSubject = view.findViewById<TextView>(R.id.rc_txt_subject)
+        val tvDescription = view.findViewById<TextView>(R.id.rc_txt_description)
     }
 }

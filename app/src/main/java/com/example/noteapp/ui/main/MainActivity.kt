@@ -42,7 +42,7 @@ class MainActivity : BaseActivity() {
         addNoteFab.setOnClickListener {
 
 
-            showFragment(AddNoteFragment())
+            showFragment(AddNoteFragment(this))
         }
     }
 

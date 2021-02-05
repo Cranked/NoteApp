@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.example.noteapp.R
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.fragment_notes.*
 
 import java.util.*
 
