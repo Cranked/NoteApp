@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="addNoteFragment"
-            type="com.example.noteapp.ui.fragments.AddNoteFragment" />
+            name="addNoteActivity"
+            type="com.example.noteapp.ui.addnote.AddNoteActivity" />
 
     </data>
 
@@ -112,7 +112,7 @@
                         android:id="@+id/cameraImageView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="@{()->addNoteFragment.takePhoto()}"
+                        android:onClick="@{()->addNoteActivity.takePhoto()}"
                         android:src="@drawable/icon_camera" />
                 </LinearLayout>
 
@@ -124,7 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:onClick="@{addNoteFragment.cancel}"
+            android:onClick="@{addNoteActivity.cancel}"
             android:text="@string/cancel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -134,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:onClick="@{addNoteFragment.saveNote}"
+            android:onClick="@{addNoteActivity.saveNote}"
             android:text="@string/save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

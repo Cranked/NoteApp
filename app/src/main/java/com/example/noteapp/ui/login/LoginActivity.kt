@@ -52,7 +52,6 @@ class LoginActivity : BaseActivity() {
                     clearUserActivateState()
                     user.isActivated = true
                     userDao.update(user)
-                    startActivity(Intent(this, MainActivity::class.java))
                     goToActivity()
                 } else {
                     showMessage(getString(R.string.userpasswordInvalidate))
