@@ -1,4 +1,4 @@
-package com.example.noteapp.ui.fragments.dialogfragments
+package com.example.noteapp.ui.fragments
 
 import android.app.Activity
 import android.content.Intent

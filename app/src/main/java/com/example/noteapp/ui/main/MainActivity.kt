@@ -9,7 +9,7 @@ import com.example.noteapp.R
 import com.example.noteapp.data.db.models.Notes
 import com.example.noteapp.ui.base.BaseActivity
 import com.example.noteapp.ui.fragments.NotesFragment
-import com.example.noteapp.ui.fragments.dialogfragments.AddNoteFragment
+import com.example.noteapp.ui.fragments.AddNoteFragment
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 
 
