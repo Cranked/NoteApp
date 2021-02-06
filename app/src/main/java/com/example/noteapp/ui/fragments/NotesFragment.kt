@@ -31,9 +31,7 @@ class NotesFragment : Fragment() {
 
     fun setupViewPager(viewPager: ViewPager) {
         val viewPagerAdapter = ViewPagerAdapter(fragmentManager)
-        viewPagerAdapter.addFrag(JobDoneFragment(), getString(R.string.doneNote))
-        viewPagerAdapter.addFrag(ContinuousNoteFragment(), getString(R.string.continousNote))
-        viewPagerAdapter.addFrag(TodoNoteFragment(), getString(R.string.todoNote))
+
         viewPager.adapter = viewPagerAdapter
 
     }

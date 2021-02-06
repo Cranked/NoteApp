@@ -6,7 +6,7 @@
 
         <variable
             name="addNoteFragment"
-            type="com.example.noteapp.ui.fragments.dialogfragments.AddNoteFragment" />
+            type="com.example.noteapp.ui.fragments.AddNoteFragment" />
 
     </data>
 
