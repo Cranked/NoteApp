@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.noteapp.Helper
 import com.example.noteapp.ApplicationNote
@@ -72,7 +73,12 @@ open class BaseActivity : AppCompatActivity(), View {
         }
     }
 
-    override fun showDialog(message: String) {
+    override fun getDialog(message: String,cancelable:Boolean):AlertDialog.Builder {
+        var builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.app_name))
+        builder.setCancelable(cancelable)
+        builder.setMessage(message)
+        return builder
 
     }
 

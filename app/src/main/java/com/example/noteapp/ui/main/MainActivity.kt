@@ -1,5 +1,6 @@
 package com.example.noteapp.ui.main
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -12,7 +13,7 @@ import com.example.noteapp.ui.addnote.AddNoteActivity
 import com.example.noteapp.ui.fragments.NotesFragment
 import com.example.noteapp.ui.login.LoginActivity
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +30,7 @@ class MainActivity : BaseActivity() {
                 goToActivity(Intent(this, AddNoteActivity::class.java))
             }
             R.id.logOut -> {
-                userDao.getActivateUser(true).let {
-                    it.isActivated = false
-                    userDao.update(it)
-                    goToActivity(Intent(this, LoginActivity::class.java))
-                }
+                logOut()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -48,6 +45,21 @@ class MainActivity : BaseActivity() {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.appbar_menu, menu)
         return true
+    }
+
+    override fun logOut() {
+        val builder = getDialog(getString(R.string.logOutDescriptionString), false)
+        builder.setNegativeButton(getString(R.string.no)) { dialog, which ->
+            dialog.dismiss()
+        }
+        builder.setPositiveButton(getString(R.string.yes)) { dialog, which ->
+            userDao.getActivateUser(true).let {
+                it.isActivated = false
+                userDao.update(it)
+                goToActivity(Intent(this, LoginActivity::class.java))
+            }
+        }
+        builder.show()
     }
 
     override fun onBackPressed() {

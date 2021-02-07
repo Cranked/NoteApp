@@ -27,6 +27,9 @@
     <string name="deleteNote">Not Sil</string>
     <string name="updateNote">Not Güncelle</string>
     <string name="logOut">Çıkış Yap</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <string name="logOutDescriptionString">Uygulamadan  çıkmak istiyormusunuz</string>
     <string name="save">Kaydet</string>
     <string name="cancel">Vazgeç</string>
     <string-array name="note_states">

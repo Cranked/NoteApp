@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
         <item android:id="@+id/noteOperations"
             android:title="@string/noteOperations" >
-            <!-- "file" submenu -->
+
             <menu>
                 <item android:id="@+id/addNote"
                     android:icon="@drawable/icon_add_note"
@@ -15,8 +15,8 @@
                     android:title="@string/deleteNote" />
             </menu>
         </item>
-    <item android:id="@+id/logOut"
+    <item
+        android:id="@+id/logOut"
         android:icon="@drawable/icon_logout"
-        android:title="@string/logOut"
-        ></item>
+        android:title="@string/logOut" />
 </menu>
