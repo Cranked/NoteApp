@@ -14,7 +14,7 @@ interface NotesDao {
     @Query("Select * from notes where noteId=:noteId")
     fun getNoteInformation(noteId: Int): List<Notes>
 
-    @Query("Select * from notes where noteState=:noteState")
+    @Query("Select * from notes where noteState=:noteState ORDER BY noteId DESC")
     fun getNoteList(noteState: Int): List<Notes>
 
     @Insert

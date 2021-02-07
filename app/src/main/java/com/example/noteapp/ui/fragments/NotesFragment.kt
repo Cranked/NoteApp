@@ -9,11 +9,10 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.example.noteapp.R
+import com.example.noteapp.ui.main.MainActivity
 import com.google.android.material.tabs.TabLayout
 
-import java.util.*
-
-class NotesFragment : Fragment() {
+class NotesFragment(var mainActivity: MainActivity) : Fragment() {
     lateinit var viewPager: ViewPager
     lateinit var tabs: TabLayout
     override fun onCreateView(
@@ -30,8 +29,13 @@ class NotesFragment : Fragment() {
     }
 
     fun setupViewPager(viewPager: ViewPager) {
-        val viewPagerAdapter = ViewPagerAdapter(fragmentManager)
-
+        val viewPagerAdapter = ViewPagerAdapter(mainActivity.supportFragmentManager)
+        viewPagerAdapter.addFrag(DoneNoteFragment(mainActivity), getString(R.string.doneNote))
+        viewPagerAdapter.addFrag(
+            ContinuousNoteFragment(mainActivity),
+            getString(R.string.continousNote)
+        )
+        viewPagerAdapter.addFrag(TodoNoteFragment(mainActivity), getString(R.string.todoNote))
         viewPager.adapter = viewPagerAdapter
 
     }

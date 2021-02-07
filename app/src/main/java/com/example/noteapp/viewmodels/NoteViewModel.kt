@@ -5,7 +5,7 @@ import androidx.databinding.Bindable
 import com.example.noteapp.BR
 import com.example.noteapp.data.db.models.Notes
 
-class NoteViewModel(var mNotes: Notes) : BaseObservable() {
+class NoteViewModel(private val mNotes: Notes) : BaseObservable() {
 
     var title: String?
         @Bindable
