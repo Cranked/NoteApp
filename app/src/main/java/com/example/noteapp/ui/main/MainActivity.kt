@@ -1,11 +1,11 @@
 package com.example.noteapp.ui.main
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import com.example.noteapp.enums.NoteOperation
 import com.example.noteapp.R
 import com.example.noteapp.data.db.models.Notes
 import com.example.noteapp.ui.base.BaseActivity
@@ -13,21 +13,32 @@ import com.example.noteapp.ui.addnote.AddNoteActivity
 import com.example.noteapp.ui.fragments.NotesFragment
 import com.example.noteapp.ui.login.LoginActivity
 
-class MainActivity : BaseActivity(), View {
-
+class MainActivity : BaseActivity(), MainView {
+    var noteOperation: NoteOperation = NoteOperation.SHOW
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        activeUserId = userDao.getActivateUser(true).userId
         showFragment(NotesFragment(this))
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.appbar_menu, menu)
+        return true
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.addNote -> {
                 goToActivity(Intent(this, AddNoteActivity::class.java))
+            }
+            R.id.updateNote -> {
+                noteOperation = NoteOperation.UPDATE
+            }
+            R.id.deleteNote -> {
+                noteOperation = NoteOperation.DELETE
             }
             R.id.logOut -> {
                 logOut()
@@ -41,10 +52,9 @@ class MainActivity : BaseActivity(), View {
         finish()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.appbar_menu, menu)
-        return true
+    override fun showSelectedRow(notes: Notes) {
+
+
     }
 
     override fun logOut() {

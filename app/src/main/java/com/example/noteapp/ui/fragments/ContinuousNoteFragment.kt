@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp.R
 import com.example.noteapp.adapter.NoteAdapter
+import com.example.noteapp.adapter.SelectedItemListener
+import com.example.noteapp.data.db.models.Notes
 import com.example.noteapp.ui.main.MainActivity
 
-class ContinuousNoteFragment(val mainActivity: MainActivity) : Fragment() {
+class ContinuousNoteFragment(val mainActivity: MainActivity) : Fragment(),SelectedItemListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,10 +32,13 @@ class ContinuousNoteFragment(val mainActivity: MainActivity) : Fragment() {
         recyclerView.addItemDecoration(vItemDecoration)
         val layoutManager = LinearLayoutManager(mainActivity)
         recyclerView.layoutManager = layoutManager
-        var notes = mainActivity.notesDao.getNoteList(1)
-        val adapter = NoteAdapter(notes, context!!)
+        var notes = mainActivity.notesDao.getNoteList(1,mainActivity.activeUserId!!)
+        val adapter = NoteAdapter(notes, context!!,this)
         recyclerView.adapter = adapter
         return view
     }
 
+    override fun selectedRow(notes: Notes) {
+
+    }
 }

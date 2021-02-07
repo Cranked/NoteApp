@@ -11,7 +11,7 @@ import com.example.noteapp.data.db.models.Picture
 import com.example.noteapp.data.db.models.Notes
 import com.example.noteapp.data.db.models.User
 
-@Database(entities = [User::class, Notes::class, Picture::class], version = 2)
+@Database(entities = [User::class, Notes::class, Picture::class], version = 1)
 abstract class DatabaseManager : RoomDatabase() {
 
     abstract fun userDao(): UserDao

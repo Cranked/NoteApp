@@ -10,11 +10,13 @@ class Picture {
     public var pictureId: Int = 0
 
     @ColumnInfo(name = "noteId")
-     var noteId: Int = 0
+    var noteId: Int = 0
 
     @ColumnInfo(name = "pictureName")
     lateinit var pictureName: String
 
+    @ColumnInfo(name = "userId")
+    var userId: Int = 0
 
 
 }
