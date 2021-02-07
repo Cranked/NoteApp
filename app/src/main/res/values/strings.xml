@@ -26,7 +26,7 @@
     <string name="addNote">Not Ekle</string>
     <string name="deleteNote">Not Sil</string>
     <string name="updateNote">Not Güncelle</string>
-
+    <string name="logOut">Çıkış Yap</string>
     <string name="save">Kaydet</string>
     <string name="cancel">Vazgeç</string>
     <string-array name="note_states">

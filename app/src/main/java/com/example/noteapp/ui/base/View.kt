@@ -7,4 +7,5 @@ interface View {
     fun showMessage(message: String)
     fun showFragment(fragment: Fragment)
     fun goToActivity(intent: Intent)
+    fun showDialog(message: String)
 }
