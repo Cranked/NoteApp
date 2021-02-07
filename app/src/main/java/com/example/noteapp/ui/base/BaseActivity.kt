@@ -72,6 +72,10 @@ open class BaseActivity : AppCompatActivity(), View {
         }
     }
 
+    override fun showDialog(message: String) {
+
+    }
+
     override fun onResume() {
         super.onResume()
         checkPermissions()
