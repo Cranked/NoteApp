@@ -82,9 +82,4 @@ open class BaseActivity : AppCompatActivity(), View {
         return builder
 
     }
-
-    override fun onResume() {
-        super.onResume()
-        checkPermissions()
-    }
 }

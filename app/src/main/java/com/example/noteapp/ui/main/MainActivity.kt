@@ -18,15 +18,17 @@ class MainActivity : BaseActivity(), MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        activeUserId = userDao.getActivateUser(true).userId
         showFragment(NotesFragment(this))
 
     }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.appbar_menu, menu)
         return true
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.addNote -> {
@@ -51,7 +53,6 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     override fun showSelectedRow(notes: Notes) {
-
 
 
     }

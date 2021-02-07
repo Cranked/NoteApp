@@ -48,6 +48,7 @@ class SignUpActivity : BaseActivity() {
             if (userDao.getUserModel(user.userName).isEmpty()) {
                 userDao.insert(user)
                 showMessage(getString(R.string.successRegistered))
+                goToActivity(Intent(this, LoginActivity::class.java))
             } else {
                 showMessage(getString(R.string.alreadyRegistered))
             }

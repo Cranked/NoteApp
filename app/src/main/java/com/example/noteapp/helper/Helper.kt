@@ -32,7 +32,7 @@ class Helper {
         return File.createTempFile(fileName, ".jpg", directoryStorage)
     }
 
-    fun getView(context: Context, notes: List<IntegratedNoteModel>,imageList:List<String>): View {
+    fun getView(context: Context, notes: List<IntegratedNoteModel>, imageList: List<String>): View {
         var layout = LinearLayout(context)
         layout.orientation = LinearLayout.VERTICAL
 
@@ -70,7 +70,8 @@ class Helper {
             layout.addView(seperateLinearLayout)
 
         }
-
+        val view = getViewFromPhoto(context, imageList)
+        layout.addView(view)
         return layout
     }
 

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -36,7 +35,8 @@ class DoneNoteFragment(val mainActivity: MainActivity) : Fragment(), SelectedIte
         )
         vItemDecoration.setDrawable(mDivider!!)
         recyclerView.addItemDecoration(vItemDecoration)
-        var notes = mainActivity.notesDao.getNoteList(0)
+        val activeUserId=mainActivity.userDao.getActivateUser(true).userId
+        var notes = mainActivity.notesDao.getNoteList(0,activeUserId)
         val adapter = NoteAdapter(notes, context!!, this)
         recyclerView.adapter = adapter
         // Inflate the layout for this fragment
@@ -59,11 +59,13 @@ class DoneNoteFragment(val mainActivity: MainActivity) : Fragment(), SelectedIte
                 integratedList.add(titleIntegratedModel)
                 integratedList.add(subjectIntegratedModel)
                 integratedList.add(descriptionIntegratedModel)
-                var imageList= arrayListOf<String>()
-                mainActivity.pictureDao.getUserNotes(notes.noteId,mainActivity.activeUserId!!).forEach {
+                var imageList = arrayListOf<String>()
+                val activeUserId: Int = mainActivity.userDao.getActivateUser(true).userId
+                mainActivity.pictureDao.getNotePictures(notes.noteId,activeUserId).forEach {
                     imageList.add(it.pictureName)
                 }
-                val integratedView = mainActivity.helper.getView(context!!,integratedList, imageList!!)
+                val integratedView =
+                    mainActivity.helper.getView(context!!, integratedList, imageList!!)
                 var dialog = mainActivity.getDialog("Bilgi", true)
                 dialog.setView(integratedView)
                 dialog.show()

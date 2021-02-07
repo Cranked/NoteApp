@@ -32,7 +32,7 @@ class ContinuousNoteFragment(val mainActivity: MainActivity) : Fragment(),Select
         recyclerView.addItemDecoration(vItemDecoration)
         val layoutManager = LinearLayoutManager(mainActivity)
         recyclerView.layoutManager = layoutManager
-        var notes = mainActivity.notesDao.getNoteList(1)
+        var notes = mainActivity.notesDao.getNoteList(1,mainActivity.activeUserId!!)
         val adapter = NoteAdapter(notes, context!!,this)
         recyclerView.adapter = adapter
         return view

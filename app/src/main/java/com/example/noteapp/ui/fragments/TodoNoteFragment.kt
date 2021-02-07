@@ -45,7 +45,7 @@ class TodoNoteFragment(var mainActivity: MainActivity) : Fragment(),SelectedItem
         recyclerView.addItemDecoration(vItemDecoration)
         val layoutManager = LinearLayoutManager(mainActivity)
         recyclerView.layoutManager = layoutManager
-        var notes = mainActivity.notesDao.getNoteList(2)
+        var notes = mainActivity.notesDao.getNoteList(2,mainActivity.activeUserId!!)
         val adapter = NoteAdapter(notes, context!!,this)
         recyclerView.adapter = adapter
 

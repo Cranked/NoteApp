@@ -11,11 +11,14 @@ interface NotesDao {
     @Query("Select * from notes where userId=:userId")
     fun getUserNotes(userId: Int): List<Notes>
 
-    @Query("Select * from notes where noteId=:noteId")
-    fun getNoteInformation(noteId: Int): List<Notes>
+    @Query("Select * from notes where noteId=:noteId AND userId=:userId")
+    fun getNoteInformation(noteId: Int, userId: Int): List<Notes>
 
-    @Query("Select * from notes where noteState=:noteState ORDER BY noteId DESC")
-    fun getNoteList(noteState: Int): List<Notes>
+    @Query("Select * from notes where noteState=:noteState AND userId=:userId ORDER BY noteId DESC")
+    fun getNoteList(noteState: Int, userId: Int): List<Notes>
+
+    @Query("Select MAX(noteId) from notes")
+    fun getMaxValue(): Int
 
     @Insert
     fun insert(notes: Notes)

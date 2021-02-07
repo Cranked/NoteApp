@@ -109,12 +109,15 @@ class AddNoteActivity : BaseActivity() {
                     notes.noteState = 2
                 }
             }
+            val activeUserId = userDao.getActivateUser(true).userId
+            notes.userId = activeUserId
             notesDao.insert(notes)
+
             pictureList.forEach {
                 val images = Picture()
-                images.userId = activeUserId!!
+                images.userId = activeUserId
                 images.pictureName = it
-                images.noteId = notes.noteId
+                images.noteId = notesDao.getMaxValue()
                 pictureDao.insert(images)
             }
             Toast.makeText(this, getString(R.string.successRegistered), Toast.LENGTH_SHORT)

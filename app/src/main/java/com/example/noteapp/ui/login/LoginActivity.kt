@@ -44,11 +44,15 @@ class LoginActivity : BaseActivity() {
                 goToLogin()
             }
             signInButton.setOnClickListener {
-                if (helper.validationNull(userNameEditText.text.toString()) || helper.validationNull(passwordEditText.text.toString())) {
+                if (helper.validationNull(userNameEditText.text.toString()) || helper.validationNull(
+                        passwordEditText.text.toString()
+                    )
+                ) {
                     showMessage(getString(R.string.mustUserNameandPassword))
                     return@setOnClickListener
                 }
-                var user = getUserModel(userNameEditText.text.toString(), passwordEditText.text.toString())
+                var user =
+                    getUserModel(userNameEditText.text.toString(), passwordEditText.text.toString())
                 if (user != null) {
                     clearUserActivateState()
                     user.isActivated = true
@@ -69,8 +73,8 @@ class LoginActivity : BaseActivity() {
     }
 
     fun goToActivity() {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     fun clearUserActivateState() {
@@ -82,5 +86,10 @@ class LoginActivity : BaseActivity() {
 
     fun getUserModel(userName: String, password: String): User {
         return userDao.getUserInformations(userName, password)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        checkPermissions()
     }
 }
