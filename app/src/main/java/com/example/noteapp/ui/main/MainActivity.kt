@@ -27,8 +27,8 @@ class MainActivity : BaseActivity() {
         deleteNoteFab = findViewById(R.id.deleteNoteFab)
         updateNoteFab = findViewById(R.id.updateNoteFab)
         setOnClickListener()
-        showFragment(NotesFragment())
         setViewFabs(visibleState)
+        showFragment(NotesFragment(this))
 
     }
 
@@ -59,7 +59,6 @@ class MainActivity : BaseActivity() {
         }
     }
 
-
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStack()
@@ -67,5 +66,6 @@ class MainActivity : BaseActivity() {
             super.onBackPressed()
         }
     }
+
 
 }

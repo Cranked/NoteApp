@@ -121,7 +121,7 @@ class AddNoteActivity : BaseActivity() {
             Toast.makeText(this, getString(R.string.successRegistered), Toast.LENGTH_SHORT)
                 .show()
             pictureList.clear()
-            onBackPressed()
+            gotMainActivity()
         } catch (e: Exception) {
             Log.e(TAG, e.toString())
         }
@@ -130,12 +130,15 @@ class AddNoteActivity : BaseActivity() {
 
     fun cancel(view: View) {
         try {
-            onBackPressed()
-
+            gotMainActivity()
         } catch (e: Exception) {
             Log.e("Hata", e.toString())
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show()
         }
+    }
+
+    fun gotMainActivity() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     override fun onBackPressed() {

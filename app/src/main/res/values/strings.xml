@@ -18,7 +18,7 @@
     <string name="description">Açıklama</string>
     <string name="state">Durumu</string>
 
-    <string name="todoNote">Yapılacaklar </string>
+    <string name="todoNote">Yapılacak </string>
     <string name="continousNote">Yapılıyor </string>
     <string name="doneNote">Yapıldı </string>
 
@@ -30,9 +30,9 @@
     <string name="save">Kaydet</string>
     <string name="cancel">Vazgeç</string>
     <string-array name="note_states">
-        <item>Yapıldı</item>
-        <item>Yapılıyor</item>
-        <item>Yapılacak</item>
+        <item>@string/doneNote</item>
+        <item>@string/continousNote</item>
+        <item>@string/todoNote</item>
     </string-array>
 
 

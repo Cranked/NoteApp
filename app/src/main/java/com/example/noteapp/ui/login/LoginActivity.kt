@@ -2,6 +2,7 @@ package com.example.noteapp.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Button
 import android.widget.EditText
 import com.example.noteapp.R
@@ -11,6 +12,7 @@ import com.example.noteapp.ui.signup.SignUpActivity
 import com.example.noteapp.ui.base.BaseActivity
 import java.lang.Exception
 
+@Suppress("DEPRECATION")
 class LoginActivity : BaseActivity() {
     lateinit var signUpButton: Button
     lateinit var signInButton: Button
@@ -68,8 +70,8 @@ class LoginActivity : BaseActivity() {
     }
 
     fun goToActivity() {
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
     }
 
     fun clearUserActivateState() {
