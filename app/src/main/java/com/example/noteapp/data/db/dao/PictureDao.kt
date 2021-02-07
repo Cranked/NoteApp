@@ -1,9 +1,6 @@
 package com.example.noteapp.data.db.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.noteapp.data.db.models.Picture
 
 @Dao
@@ -20,5 +17,10 @@ interface PictureDao {
     @Update
     fun update(picture: Picture)
 
+    @Query("Delete from picture where noteId=:noteId AND  userId=:userId")
+    fun deletePictureId(noteId: Int, userId: Int)
+
+    @Delete
+    fun delete(picture: Picture)
 
 }

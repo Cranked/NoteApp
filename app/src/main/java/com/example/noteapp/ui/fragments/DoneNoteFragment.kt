@@ -19,13 +19,16 @@ import com.example.noteapp.ui.main.MainActivity
 
 
 class DoneNoteFragment(val mainActivity: MainActivity) : Fragment(), SelectedItemListener {
-
+    lateinit var adapter: NoteAdapter
+    lateinit var notesList: List<Notes>
+    lateinit var recyclerView: RecyclerView
+    var activeUserId: Int? = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_done_note, container, false)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.doneNoteList)
+        recyclerView = view.findViewById<RecyclerView>(R.id.doneNoteList)
         val layoutManager = LinearLayoutManager(mainActivity)
         recyclerView.layoutManager = layoutManager
         val mDivider = ContextCompat.getDrawable(context!!, R.drawable.divider)
@@ -35,9 +38,9 @@ class DoneNoteFragment(val mainActivity: MainActivity) : Fragment(), SelectedIte
         )
         vItemDecoration.setDrawable(mDivider!!)
         recyclerView.addItemDecoration(vItemDecoration)
-        val activeUserId=mainActivity.userDao.getActivateUser(true).userId
-        var notes = mainActivity.notesDao.getNoteList(0,activeUserId)
-        val adapter = NoteAdapter(notes, context!!, this)
+        activeUserId = mainActivity.userDao.getActivateUser(true).userId
+        notesList = mainActivity.notesDao.getNoteList(0, activeUserId!!)
+        adapter = NoteAdapter(notesList, context!!, this)
         recyclerView.adapter = adapter
         // Inflate the layout for this fragment
         return view
@@ -61,13 +64,31 @@ class DoneNoteFragment(val mainActivity: MainActivity) : Fragment(), SelectedIte
                 integratedList.add(descriptionIntegratedModel)
                 var imageList = arrayListOf<String>()
                 val activeUserId: Int = mainActivity.userDao.getActivateUser(true).userId
-                mainActivity.pictureDao.getNotePictures(notes.noteId,activeUserId).forEach {
+                mainActivity.pictureDao.getNotePictures(notes.noteId, activeUserId).forEach {
                     imageList.add(it.pictureName)
                 }
                 val integratedView =
                     mainActivity.helper.getView(context!!, integratedList, imageList!!)
                 var dialog = mainActivity.getDialog("Bilgi", true)
                 dialog.setView(integratedView)
+                dialog.show()
+
+            }
+            NoteOperation.DELETE -> {
+                var dialog =
+                    mainActivity.getDialog(getString(R.string.wantedDeleteSelectedRow), false)
+                dialog.setNegativeButton(getString(R.string.no)) { dialog, which ->
+                    dialog.dismiss()
+                    mainActivity.noteOperation = NoteOperation.SHOW
+                }
+                dialog.setPositiveButton(getString(R.string.yes)) { dialog, which ->
+                    mainActivity.notesDao.deleteNotesFromUser(notes.noteId, activeUserId!!)
+                    mainActivity.pictureDao.deletePictureId(notes.noteId, activeUserId!!)
+                    notesList = mainActivity.notesDao.getNoteList(0, activeUserId!!)
+                    adapter = NoteAdapter(notesList, context!!, this)
+                    recyclerView.adapter = adapter
+                    dialog.dismiss()
+                }
                 dialog.show()
 
             }

@@ -1,9 +1,6 @@
 package com.example.noteapp.data.db.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.noteapp.data.db.models.Notes
 
 @Dao
@@ -20,11 +17,16 @@ interface NotesDao {
     @Query("Select MAX(noteId) from notes")
     fun getMaxValue(): Int
 
+    @Query("Delete from notes where noteId=:noteId AND userId=:userId")
+    fun deleteNotesFromUser(noteId: Int, userId: Int)
+
     @Insert
     fun insert(notes: Notes)
 
     @Update
     fun update(notes: Notes)
 
+    @Delete
+    fun delete(notes: Notes)
 
 }

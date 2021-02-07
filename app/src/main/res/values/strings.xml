@@ -32,6 +32,7 @@
     <string name="logOutDescriptionString">Uygulamadan  çıkmak istiyormusunuz</string>
     <string name="save">Kaydet</string>
     <string name="cancel">Vazgeç</string>
+    <string name="wantedDeleteSelectedRow">Seçili satırı gerçekten silmek istiyormusunuz ?</string>
     <string-array name="note_states">
         <item>@string/doneNote</item>
         <item>@string/continousNote</item>
