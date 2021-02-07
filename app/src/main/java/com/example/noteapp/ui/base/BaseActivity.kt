@@ -19,6 +19,7 @@ import java.lang.Exception
 
 open class BaseActivity : AppCompatActivity(), View {
     var database: DatabaseManager? = null
+    var activeUserId: Int? = 0
     lateinit var userDao: UserDao
     lateinit var notesDao: NotesDao
     lateinit var pictureDao: PictureDao
@@ -73,7 +74,7 @@ open class BaseActivity : AppCompatActivity(), View {
         }
     }
 
-    override fun getDialog(message: String,cancelable:Boolean):AlertDialog.Builder {
+    override fun getDialog(message: String, cancelable: Boolean): AlertDialog.Builder {
         var builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.app_name))
         builder.setCancelable(cancelable)

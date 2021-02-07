@@ -6,9 +6,7 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
@@ -64,21 +62,21 @@ class AddNoteActivity : BaseActivity() {
         try {
             if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
                 val takenPhoto = BitmapFactory.decodeFile(filePhoto.absolutePath)
-                val imageButton = ImageView(this)
-                imageButton.layoutParams = LinearLayout.LayoutParams(150, 150)
-                imageButton.tag = "Resim"
+                val imageView = ImageView(this)
+                imageView.layoutParams = LinearLayout.LayoutParams(150, 150)
+                imageView.tag = "Resim"
                 val closeImageView = ImageView(this)
                 closeImageView.layoutParams =
                     LinearLayout.LayoutParams(50, LinearLayout.LayoutParams.WRAP_CONTENT)
                 closeImageView.setImageDrawable(getDrawable(R.drawable.icon_close))
-                imageButton.setImageBitmap(takenPhoto)
+                imageView.setImageBitmap(takenPhoto)
                 pictureList.add(filePhoto.path)
-                binding.cameraLinearLayout.addView(imageButton)
+                binding.cameraLinearLayout.addView(imageView)
                 binding.cameraLinearLayout.addView(closeImageView)
                 closeImageView.setOnClickListener {
                     pictureList.remove(filePhoto.path)
 
-                    binding.cameraLinearLayout.removeView(imageButton)
+                    binding.cameraLinearLayout.removeView(imageView)
                     binding.cameraLinearLayout.removeView(closeImageView)
                 }
 
@@ -114,6 +112,7 @@ class AddNoteActivity : BaseActivity() {
             notesDao.insert(notes)
             pictureList.forEach {
                 val images = Picture()
+                images.userId = activeUserId!!
                 images.pictureName = it
                 images.noteId = notes.noteId
                 pictureDao.insert(images)

@@ -15,12 +15,14 @@ class SplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         Handler().postDelayed({
-            if (userDao.getActivateUser(true) != null) {
+            val user = userDao.getActivateUser(true)
+            if (user != null) {
+                activeUserId = user.userId
                 goToActivity(Intent(this, MainActivity::class.java))
             } else {
                 goToActivity(Intent(this, LoginActivity::class.java))
             }
-        },500)
+        }, 500)
 
     }
 }
