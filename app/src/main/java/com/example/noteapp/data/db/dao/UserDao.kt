@@ -14,6 +14,9 @@ interface UserDao {
     @Query("Select * from user where userName=:userName")
     fun getUserModel(userName: String): List<User>
 
+    @Query("Select * from user where IsActivated=:activated LIMIT 1")
+    fun getActivateUser(activated: Boolean): User
+
     @Insert
     fun insert(user: User)
 

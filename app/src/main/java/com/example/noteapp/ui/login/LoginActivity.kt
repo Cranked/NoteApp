@@ -12,7 +12,6 @@ import com.example.noteapp.ui.signup.SignUpActivity
 import com.example.noteapp.ui.base.BaseActivity
 import java.lang.Exception
 
-@Suppress("DEPRECATION")
 class LoginActivity : BaseActivity() {
     lateinit var signUpButton: Button
     lateinit var signInButton: Button

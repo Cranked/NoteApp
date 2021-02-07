@@ -1,11 +1,13 @@
 package com.example.noteapp.ui.base
 
 import android.Manifest
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.noteapp.Helper
+import com.example.noteapp.ApplicationNote
 import com.example.noteapp.R
 import com.example.noteapp.data.db.DatabaseManager
 import com.example.noteapp.data.db.dao.NotesDao
@@ -21,12 +23,14 @@ open class BaseActivity : AppCompatActivity(), View {
     lateinit var pictureDao: PictureDao
     lateinit var helper: Helper
     lateinit var appPermissions: AppPermissions
+    lateinit var appNote: ApplicationNote
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
+        appNote = application as ApplicationNote
         helper = Helper()
         appPermissions = AppPermissions(this)
-        database = DatabaseManager.getDatabaseManager(this)
+        database = appNote.dataBase
         userDao = database!!.userDao()
         notesDao = database!!.notesDao()
         pictureDao = database!!.pictureDao()
@@ -41,10 +45,19 @@ open class BaseActivity : AppCompatActivity(), View {
             .commitAllowingStateLoss()
     }
 
+    override fun goToActivity(intent: Intent) {
+        startActivity(intent)
+        finish()
+    }
+
     fun checkPermissions() {
         try {
             val permissions =
-                arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+                arrayOf(
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                )
             appPermissions = AppPermissions(this)
             if (!appPermissions.hasPermission(this, permissions)) {
 
