@@ -12,9 +12,15 @@ class Notes {
     @ColumnInfo(name = "userId")
     var userId: Int = 0
 
-    @ColumnInfo(name = "description")
-    lateinit var description: String
+    @ColumnInfo(name = "title")
+     var title: String?=null
 
-    @ColumnInfo(name="noteState")
-    var noteState:Int=0
+    @ColumnInfo(name = "subject")
+     var subject: String?=null
+
+    @ColumnInfo(name = "description")
+     var description: String?=null
+
+    @ColumnInfo(name = "noteState")
+    var noteState: Int = 0
 }
