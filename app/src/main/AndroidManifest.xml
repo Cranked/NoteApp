@@ -18,14 +18,14 @@
         android:roundIcon="@mipmap/icon_note"
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteApp">
+        <activity android:name=".ui.deletenote.UpdateActivity"></activity>
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- FILE PROVIDER -->
+        </activity> <!-- FILE PROVIDER -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -46,17 +46,15 @@
         <activity
             android:name=".ui.login.LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
-            android:screenOrientation="fullSensor">
-
-        </activity>
+            android:screenOrientation="fullSensor"></activity>
         <activity
             android:name=".ui.main.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
-            android:screenOrientation="fullSensor"></activity>
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".ui.addnote.AddNoteActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
-            android:screenOrientation="fullSensor"></activity>
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>

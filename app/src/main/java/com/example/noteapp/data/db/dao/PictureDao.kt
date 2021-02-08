@@ -23,4 +23,9 @@ interface PictureDao {
     @Delete
     fun delete(picture: Picture)
 
+    @Query("Select COUNT(pictureId) from picture where pictureName=:pictureName")
+    fun getpictureNameCount(pictureName: String): Int
+
+    @Query("Delete from picture where pictureName=:pictureName")
+    fun deleteWithPictureName(pictureName: String)
 }

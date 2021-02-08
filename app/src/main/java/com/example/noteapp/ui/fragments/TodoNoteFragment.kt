@@ -1,5 +1,6 @@
 package com.example.noteapp.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.example.noteapp.adapter.SelectedItemListener
 import com.example.noteapp.data.db.models.Notes
 import com.example.noteapp.enums.NoteOperation
 import com.example.noteapp.models.IntegratedNoteModel
+import com.example.noteapp.ui.deletenote.UpdateActivity
 import com.example.noteapp.ui.main.MainActivity
 
 // TODO: Rename parameter arguments, choose names that match
@@ -101,6 +103,12 @@ class TodoNoteFragment(var mainActivity: MainActivity) : Fragment(),SelectedItem
                     dialog.dismiss()
                 }
                 dialog.show()
+
+            }
+            NoteOperation.UPDATE -> {
+                val intent = Intent(context, UpdateActivity::class.java)
+                intent.putExtra("noteId", notes.noteId)
+                mainActivity.startActivity(intent)
 
             }
         }

@@ -1,5 +1,6 @@
 package com.example.noteapp.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import com.example.noteapp.adapter.NoteAdapter
 import com.example.noteapp.adapter.SelectedItemListener
 import com.example.noteapp.data.db.models.Notes
 import com.example.noteapp.models.IntegratedNoteModel
+import com.example.noteapp.ui.deletenote.UpdateActivity
 import com.example.noteapp.ui.main.MainActivity
 
 
@@ -90,8 +92,14 @@ class DoneNoteFragment(val mainActivity: MainActivity) : Fragment(), SelectedIte
                     dialog.dismiss()
                 }
                 dialog.show()
+            }
+            NoteOperation.UPDATE -> {
+                val intent = Intent(context, UpdateActivity::class.java)
+                intent.putExtra("noteId", notes.noteId)
+                mainActivity.startActivity(intent)
 
             }
         }
     }
+
 }
