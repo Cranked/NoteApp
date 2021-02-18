@@ -28,6 +28,4 @@ lint
 .idea/jarRepositories.xml
 .idea/misc.xml
 app/libs/
-app/src/main/java/com/example/noteapp/models/
 libs/
-src/main/java/com/example/noteapp/models/
