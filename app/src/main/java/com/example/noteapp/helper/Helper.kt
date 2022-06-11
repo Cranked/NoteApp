@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Environment
 import android.view.View
+import android.widget.HorizontalScrollView
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -34,6 +35,7 @@ class Helper {
 
     fun getView(context: Context, notes: List<IntegratedNoteModel>, imageList: List<String>): View {
         var layout = LinearLayout(context)
+        var horizontalScrollView = HorizontalScrollView(context)
         layout.orientation = LinearLayout.VERTICAL
 
         val textViewLayoutParams = LinearLayout.LayoutParams(
@@ -71,7 +73,8 @@ class Helper {
 
         }
         val view = getViewFromPhoto(context, imageList)
-        layout.addView(view)
+        horizontalScrollView.addView(view)
+        layout.addView(horizontalScrollView)
         return layout
     }
 
@@ -81,6 +84,7 @@ class Helper {
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT
         )
+        linearLayoutParams.setMargins(15, 15, 15, 15)
         linearLayout.layoutParams = linearLayoutParams
         val imageViewLayoutParams = LinearLayout.LayoutParams(150, 150)
         images.forEach {
