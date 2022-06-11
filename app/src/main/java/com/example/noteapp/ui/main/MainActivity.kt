@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 import com.example.noteapp.enums.NoteOperation
 import com.example.noteapp.R
 import com.example.noteapp.data.db.models.Notes
@@ -19,6 +20,8 @@ class MainActivity : BaseActivity(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         activeUserId = userDao.getActivateUser(true).userId
+        val toolbar = findViewById(R.id.toolbar2) as Toolbar?
+        setSupportActionBar(toolbar)
         showFragment(NotesFragment(this))
 
     }
@@ -50,11 +53,6 @@ class MainActivity : BaseActivity(), MainView {
     override fun goToActivity(intent: Intent) {
         startActivity(intent)
         finish()
-    }
-
-    override fun showSelectedRow(notes: Notes) {
-
-
     }
 
     override fun logOut() {

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <data>
-
         <variable
             name="addNoteActivity"
             type="com.example.noteapp.ui.addnote.AddNoteActivity" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -98,23 +95,35 @@
 
                 </Spinner>
 
-                <LinearLayout
-                    android:id="@+id/cameraLinearLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="24dp"
+
+                <HorizontalScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:fillViewport="false"
                     android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/stateSpinner">
 
-                    <ImageButton
-                        android:id="@+id/cameraImageView"
+                    <LinearLayout
+                        android:id="@+id/cameraLinearLayout"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="@{()->addNoteActivity.takePhoto()}"
-                        android:src="@drawable/icon_camera" />
-                </LinearLayout>
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="24dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/stateSpinner">
+
+                        <ImageButton
+                            android:id="@+id/cameraImageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->addNoteActivity.takePhoto()}"
+                            android:src="@drawable/icon_camera" />
+                    </LinearLayout>
+                </HorizontalScrollView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
@@ -123,7 +132,9 @@
             android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
             android:layout_marginBottom="16dp"
+            android:background="@android:color/holo_red_dark"
             android:onClick="@{addNoteActivity.cancel}"
             android:text="@string/cancel"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -133,7 +144,9 @@
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
             android:layout_marginBottom="16dp"
+            android:background="@color/design_default_color_secondary"
             android:onClick="@{addNoteActivity.saveNote}"
             android:text="@string/save"
             app:layout_constraintBottom_toBottomOf="parent"
